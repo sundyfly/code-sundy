@@ -1,10 +1,10 @@
 注：[基于这位仁兄版本基础上修改](https://github.com/wangleeyom/code-artisan/)
 
-# 开发工具的说明
+##开发工具的说明
 	1、IntelliJ IDEA 2017.1.2
 	2、MySQL的版本为：5.7.17
 	
-# 集成说明
+##集成说明
 - [x] 项目搭建
 - [x] 前后台参数传递约定
 - [x] 统一响应结构
