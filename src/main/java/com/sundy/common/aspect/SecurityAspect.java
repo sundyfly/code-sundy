@@ -60,7 +60,13 @@ public class SecurityAspect {
 
         // 若目标方法忽略了安全性检查,则直接调用目标方法
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
-            return pjp.proceed();
+            IgnoreSecurity annotation = method.getAnnotation(IgnoreSecurity.class);
+            if(annotation!=null){
+                int security = annotation.security();
+                if (security==0){
+                    return pjp.proceed();
+                }
+            }
         }
 
         // 从 request header 中获取当前 token

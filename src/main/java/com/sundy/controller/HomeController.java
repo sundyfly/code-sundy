@@ -85,6 +85,7 @@ public class HomeController {
     @ApiImplicitParam(paramType = "query" ,name = "uid" ,value = "用户ID",dataType = "int")
     @RequestMapping(value = "/logout" ,method = RequestMethod.POST)
     @ResponseBody
+    @IgnoreSecurity(security = IgnoreSecurity.USER)
     public AjaxResult logout(@RequestParam("uid")int uid,HttpServletRequest request){
         AjaxResult result = new AjaxResult();
         try{

@@ -3,6 +3,7 @@ package com.sundy.common.util;
 import sun.misc.BASE64Decoder;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -294,4 +295,22 @@ public class StringUtils {
         }
         return base64Str;
     }
+
+    /**
+     * 把文件大小转换成字符串，如714340664转换成681.25M
+     *
+     * @param size
+     * @return
+     */
+    public static String convertFlowSize(long size){
+        DecimalFormat format = new DecimalFormat("0.00");
+        if(size/1024/1024/1024>0){//达到一个G
+            return format.format(size*1.0/1024/1024/1024)+"G";
+        }else if(size/1024>0){//达到一个M
+            return format.format(size*1.0/1024/1024)+"M";
+        }else{
+            return format.format(size*1.0/1024)+"K";
+        }
+    }
+
 }

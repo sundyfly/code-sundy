@@ -3,7 +3,8 @@ package com.sundy.service;
 import com.sundy.model.entity.User;
 
 /**
- * Created by sundy on 2018/3/30.
+ * @author sundy
+ * @date 2018年04月10日 15:11
  */
 public interface UserService extends BaseService<User>{
 

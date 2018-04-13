@@ -3,12 +3,15 @@ package com.sundy.service.impl;
 import com.github.pagehelper.Page;
 import com.sundy.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 /**
- * Created by tiptop on 2018/4/4.
+ * @author sundy
+ * @date 2018年03月19日 10:41
  */
 public class BaseServiceImpl<T> implements BaseService<T>{
 
@@ -21,8 +24,8 @@ public class BaseServiceImpl<T> implements BaseService<T>{
     }
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
-        return mapper.deleteByPrimaryKey(id);
+    public int deleteByPrimaryKey(Object primaryKey) {
+        return mapper.deleteByPrimaryKey(primaryKey);
     }
 
     @Override
@@ -36,8 +39,8 @@ public class BaseServiceImpl<T> implements BaseService<T>{
     }
 
     @Override
-    public T selectByPrimaryKey(Integer id) {
-        return mapper.selectByPrimaryKey(id);
+    public T selectByPrimaryKey(Object primaryKey) {
+        return mapper.selectByPrimaryKey(primaryKey);
     }
 
     @Override
@@ -54,4 +57,6 @@ public class BaseServiceImpl<T> implements BaseService<T>{
     public int updateByPrimaryKeySelective(T record) {
         return mapper.updateByPrimaryKeySelective(record);
     }
+
+
 }

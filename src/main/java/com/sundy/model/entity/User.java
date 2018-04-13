@@ -1,6 +1,10 @@
 package com.sundy.model.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Table(name = "tb_user")
 public class User {
@@ -15,18 +19,23 @@ public class User {
      * 用户名
      */
     @Column(name = "user_name")
+    @NotBlank
     private String userName;
 
     /**
      * 密码
      */
     @Column(name = "user_pwd")
+    @NotBlank
+    @Length(max = 16,message = "密码不能大于16位数")
+    @Length(min = 6 ,message = "密码不能小于6位数")
     private String userPwd;
 
     /**
      * 性别
      */
     @Column(name = "user_sex")
+    @NotBlank
     private String userSex;
 
     /**
@@ -39,12 +48,14 @@ public class User {
      * 电话
      */
     @Column(name = "user_phone")
+    @Pattern(regexp = "^1[3|4|5|7|8][0-9]{9}$",message = "手机号码格式不正确")
     private String userPhone;
 
     /**
      * 状态
      */
     @Column(name = "user_state")
+    @Pattern(regexp = "(-1|0|1)",message = "状态值只能是-1,0,1")
     private String userState;
 
     /**
@@ -55,7 +66,6 @@ public class User {
     public Integer getId() {
         return id;
     }
-
     /**
      * 设置主键
      *

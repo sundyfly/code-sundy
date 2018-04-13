@@ -5,10 +5,12 @@ import com.github.pagehelper.PageHelper;
 import com.sundy.common.constant.StatusCode;
 import com.sundy.common.util.ExceptionUtils;
 import com.sundy.model.AjaxResult;
+import com.sundy.model.PageAjaxResult;
 import com.sundy.service.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ import java.util.List;
  * @date 2018年03月27 11:17:12
  */
 public class BaseController<T> {
+
     private static final Logger LOGGER = org.apache.log4j.Logger.getLogger(BaseController.class);
 
     /**
@@ -66,13 +69,37 @@ public class BaseController<T> {
     }
 
     /**
+     * 实体分页方法
+     *
+     * @param service
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    protected PageAjaxResult getEntityLists(BaseService<T> service, Integer pageNum, Integer pageSize){
+        PageAjaxResult result = new PageAjaxResult();
+        try{
+            PageHelper.startPage(pageNum, pageSize);
+            Page<T> page = service.findEntityAll();
+            result.setData(page);
+            result.setCode(0);
+            result.setCount(page.size());
+        }catch (Exception e){
+            result.setCode(StatusCode.SYSTEM_EXCEPTION);
+            result.setMsg("getEntityLists.服务器异常.");
+            LOGGER.error(ExceptionUtils.getException(e));
+        }
+        return result;
+    }
+
+    /**
      * 根据主键查询实体
      *
      * @param service
      * @param primaryKey
      * @return
      */
-    protected AjaxResult getEntity(BaseService<T> service,Integer primaryKey){
+    protected AjaxResult getEntity(BaseService<T> service,Object primaryKey){
         AjaxResult result = new AjaxResult();
         try{
             T t = service.selectByPrimaryKey(primaryKey);
@@ -92,7 +119,7 @@ public class BaseController<T> {
      * @param primaryKey
      * @return
      */
-    protected AjaxResult deleteByPrimaryKey(BaseService<T> service, Integer primaryKey) {
+    protected AjaxResult deleteByPrimaryKey(BaseService<T> service, Object primaryKey) {
         AjaxResult result = new AjaxResult();
         try{
             service.deleteByPrimaryKey(primaryKey);
@@ -111,8 +138,12 @@ public class BaseController<T> {
      * @param record
      * @return
      */
-    protected AjaxResult updateByPrimaryKey(BaseService<T> service, T record) {
+    protected AjaxResult updateByPrimaryKey(BaseService<T> service, T record,BindingResult br) {
         AjaxResult result = new AjaxResult();
+        if (checkResult(br, result)){
+            return result;
+        }
+
         try{
             service.updateByPrimaryKey(record);
         }catch (Exception e){
@@ -130,11 +161,12 @@ public class BaseController<T> {
      * @param record
      * @return
      */
-    protected AjaxResult updateByPrimaryKeySelective(BaseService<T> service, T record,BindingResult br) {
+    protected AjaxResult updateByPrimaryKeySelective(BaseService<T> service, T record, BindingResult br) {
         AjaxResult result = new AjaxResult();
         if (checkResult(br, result)){
             return result;
         }
+
         try{
             service.updateByPrimaryKeySelective(record);
         }catch (Exception e){
@@ -156,7 +188,7 @@ public class BaseController<T> {
             StringBuffer sb = new StringBuffer();
             List<ObjectError> list = br.getAllErrors();
             for (int i = 0; i < list.size() ; i++) {
-                sb.append(list.get(i).getCode()+"-").append(list.get(i).getDefaultMessage()+";\n");
+                sb.append(list.get(i).getCode()+"-").append(list.get(i).getDefaultMessage()+"; ");
             }
             result.setCode(StatusCode.REQUEST_ERROR);
             result.setMsg(sb.toString());
@@ -164,5 +196,24 @@ public class BaseController<T> {
             return true;
         }
         return false;
+    }
+
+    /**
+     *根据主键查询T实体类
+     *
+     * @param service
+     * @param primaryKey
+     * @return
+     */
+    protected AjaxResult selectByPrimaryKey(BaseService<T> service, Object primaryKey){
+        AjaxResult result = new AjaxResult();
+        try{
+            result.setData(service.selectByPrimaryKey(primaryKey));
+        }catch (Exception e){
+            result.setCode(StatusCode.SYSTEM_EXCEPTION);
+            result.setMsg("selectByPrimaryKey.服务器异常.");
+            LOGGER.error(ExceptionUtils.getException(e));
+        }
+        return result;
     }
 }

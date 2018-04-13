@@ -5,7 +5,9 @@ import com.github.pagehelper.Page;
 import java.util.List;
 
 /**
- * Created by tiptop on 2018/4/3.
+ * Service基础接口
+ * @author sundy
+ * @date 2018年03月10 11:15:25
  */
 public interface BaseService<T> {
 
@@ -19,13 +21,14 @@ public interface BaseService<T> {
     /**
      *根据主键删除
      *
-     * @param id
+     * @param primaryKey
      * @return
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Object primaryKey);
 
     /**
      * 根据转入的实体类插入数据库
+     *
      * @param record
      * @return
      */
@@ -33,21 +36,40 @@ public interface BaseService<T> {
 
     /**
      * 根据转入的实体类选择性的插入数据库
+     *
      * @param record
      * @return
      */
     int insertSelective(T record);
 
     /**
+     *根据主键查询实体类
      *
-     * @param id
+     * @param primaryKey
      * @return
      */
-    T selectByPrimaryKey(Integer id);
+    T selectByPrimaryKey(Object primaryKey);
 
+    /**
+     * 查询实体类的所有数据
+     *
+     * @return
+     */
     List<T> selectAll();
 
+    /**
+     * 根据主键修改实体类
+     *
+     * @param record
+     * @return
+     */
     int updateByPrimaryKey(T record);
 
+    /**
+     * 根据主键修改实体类,为NULL的不更新
+     *
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(T record);
 }

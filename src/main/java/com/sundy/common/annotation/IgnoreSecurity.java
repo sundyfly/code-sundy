@@ -12,5 +12,27 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface IgnoreSecurity {
+    /**
+     * 参观者
+     */
+    int VISITOR = 0;
+
+    /**
+     * 用户
+     */
+    int USER = 1;
+
+    /**
+     * 管理者
+     */
+    int ADMIN = 2;
+
+
+    /**
+     * 权限级别
+     * 
+     * @return
+     */
+    int security () default VISITOR;
 
 }

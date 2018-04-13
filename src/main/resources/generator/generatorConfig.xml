@@ -27,7 +27,11 @@
 
     <javaClientGenerator targetPackage="com.sundy.dao" targetProject="src\main\java\" type="XMLMAPPER" />
    
-    <table tableName="tb_user" domainObjectName="User">
+   <!-- <table tableName="tb_user" domainObjectName="User">
+      <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+    </table>-->
+
+    <table tableName="tb_share_file" domainObjectName="ShareFile">
       <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
     </table>
   </context>

@@ -71,7 +71,7 @@ public class RedisTokenManager implements TokenManager {
             return false;
         }
         String token = redis.boundValueOps(model.getUserId()).get();
-        LOGGER.error("token= "+token);
+        //LOGGER.error("token= "+token);
         if (token == null || !(Base64Utils.decodeData(token)).equals(model.getToken())) {
             return false;
         }

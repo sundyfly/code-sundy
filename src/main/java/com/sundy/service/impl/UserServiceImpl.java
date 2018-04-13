@@ -6,13 +6,16 @@ import com.sundy.model.entity.UserExample;
 import com.sundy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by sundy on 2018/3/30.
+ * @author sundy
+ * @date 2018年03月19日 10:41
  */
 @Service
+@Transactional
 public class UserServiceImpl extends BaseServiceImpl<User> implements UserService{
 
     @Autowired
