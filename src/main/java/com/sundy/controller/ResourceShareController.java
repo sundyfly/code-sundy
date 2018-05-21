@@ -1,8 +1,7 @@
 package com.sundy.controller;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.sun.deploy.net.HttpResponse;
+import com.github.pagehelper.PageInfo;
 import com.sundy.common.annotation.IgnoreSecurity;
 import com.sundy.common.constant.StatusCode;
 import com.sundy.common.util.ExceptionUtils;
@@ -11,17 +10,14 @@ import com.sundy.model.AjaxResult;
 import com.sundy.model.PageAjaxResult;
 import com.sundy.model.entity.ShareFile;
 import com.sundy.model.vo.ShareFileVo;
-import com.sundy.service.BaseService;
 import com.sundy.service.ShareFileService;
 import io.swagger.annotations.*;
-import io.swagger.models.auth.In;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletOutputStream;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
@@ -33,10 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 资源分享
- *
  * @author sundy
- * @date 2018年04月09 15:13:25
+ * @since 1.8
+ * 日期: 2018年04月09 15:13:25
+ * 描述：资源分享
  */
 @Api(description = "平台资源分享", tags = "ResourceShareController", basePath = "/shares")
 @RequestMapping("/shares")
@@ -44,7 +40,7 @@ import java.util.List;
 public class ResourceShareController extends BaseController<ShareFile> {
 
     private static final Logger LOGGER = Logger.getLogger(ResourceShareController.class);
-    @Autowired
+    @Resource
     private ShareFileService shareFileService;
 
     @ApiOperation(value = "查询所有开发工具")
@@ -60,12 +56,12 @@ public class ResourceShareController extends BaseController<ShareFile> {
         PageAjaxResult result = new PageAjaxResult();
         try {
             PageHelper.startPage(page, limit);
-            Page<ShareFile> pages = shareFileService.findEntityAll();
+            PageInfo<ShareFile> pages = shareFileService.findEntityAll();
             List<ShareFileVo> list = new ArrayList<>();
             ShareFileVo shareFileVo;
-            for (int i = 0; i < pages.getResult().size(); i++) {
+            for (int i = 0; i < pages.getList().size(); i++) {
                 shareFileVo = new ShareFileVo();
-                ShareFile item = pages.getResult().get(i);
+                ShareFile item = pages.getList().get(i);
                 shareFileVo.setId(item.getId());
                 shareFileVo.setDownloadTimes(item.getDownloadTimes());
                 shareFileVo.setFileName(item.getFileName());
@@ -77,9 +73,12 @@ public class ResourceShareController extends BaseController<ShareFile> {
             result.setData(list);
             result.setCode(0);
             result.setCount((int) pages.getTotal());
+            LOGGER.debug("测试异常。。。。。。。。。。。。。。。。。。。。。");
+            LOGGER.info("测试异常。。。。。。。。。。。。。。。。。。。。。");
+            LOGGER.error("测试异常。。。。。。。。。。。。。。。。。。。。。");
         } catch (Exception e) {
             result.setCode(StatusCode.SYSTEM_EXCEPTION);
-            result.setMsg("getEntityList.服务器异常.");
+            result.setMsg("getEntityList.服务器异常."+ExceptionUtils.getException(e));
             LOGGER.error(ExceptionUtils.getException(e));
         }
         return result;
@@ -107,9 +106,9 @@ public class ResourceShareController extends BaseController<ShareFile> {
             String filePath = shareFile.getFilePath();
             if (new File(filePath).isFile()) {
                 int i = filePath.lastIndexOf(".");
-                StringBuffer filename = new StringBuffer();
+                StringBuilder filename = new StringBuilder();
                 if (i > 0) {
-                    filename.append(shareFile.getFileName() + filePath.substring(i));
+                    filename.append(shareFile.getFileName()).append(filePath.substring(i));
                 } else {
                     filename.append(shareFile.getFileName());
                 }

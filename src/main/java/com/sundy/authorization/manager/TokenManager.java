@@ -3,9 +3,10 @@ package com.sundy.authorization.manager;
 import com.sundy.authorization.model.TokenModel;
 
 /**
- * 对Token进行操作的接口
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年03月14日 10:25:41
+ * 描述：对Token进行操作的接口
  */
 public interface TokenManager {
 

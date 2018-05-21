@@ -9,9 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 日期工具类
- * @author Leeyom Wang
- * @date 2017年10月19日 12:05
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年03月12日 15:35:21
+ * 描述：日期工具类
  */
 public class DateUtils {
 

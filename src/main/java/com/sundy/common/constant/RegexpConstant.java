@@ -1,9 +1,10 @@
 package com.sundy.common.constant;
 
 /**
- * 正则表达式常量,本人正则表达式不过关
  * @author sundy
- * @date 2017年11月19日 11:31
+ * @since 1.8
+ * 日期: 2018年03月01日 11:11:27
+ * 描述：正则表达式常量
  */
 public class RegexpConstant {
 

@@ -8,9 +8,10 @@ import redis.clients.jedis.JedisPool;
 import java.util.List;
 
 /**
- * 通过Redis存储变化很小的数据表
  * @author sundy
- * @date 2018年04月10日 11:51
+ * @since 1.8
+ * 日期: 2018年04月02日 14:25:51
+ * 描述：通过Redis存储变化很小的数据表
  */
 public class RedisManagerPoolImpl implements RedisManager {
 

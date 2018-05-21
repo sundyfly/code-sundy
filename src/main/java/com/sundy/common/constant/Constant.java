@@ -1,9 +1,10 @@
 package com.sundy.common.constant;
 
 /**
- * 常量
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年03月21日 11:21:37
+ * 描述：常量
  */
 public class Constant {
 

@@ -1,6 +1,7 @@
 package com.sundy.service.impl;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.sundy.common.redis.impl.RedisManagerImpl;
 import com.sundy.dao.ShareFileMapper;
 import com.sundy.model.entity.ShareFile;
@@ -10,9 +11,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+
 /**
  * @author sundy
- * @date 2018年04月08日 11:41
+ * @since 1.8
+ * 日期: 2018年04月08日 11:21:58
+ * 描述：
  */
 @Service
 @Transactional
@@ -29,7 +34,7 @@ public class ShareFileServiceImpl extends BaseServiceImpl<ShareFile> implements 
     private ShareFileMapper shareFileMapper;
 
     @Override
-    public Page<ShareFile> findEntityAll() {
+    public PageInfo<ShareFile> findEntityAll() {
         Boolean exists = redis.exists(tb_share_file_findEntityAll);
         Page<ShareFile> entityAll = null;
 //        if(exists){

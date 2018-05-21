@@ -17,10 +17,11 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 通过Redis存储和验证token的实现类
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
  * @see com.sundy.authorization.manager.TokenManager
+ * 日期: 2018年03月14日 11:21:32
+ * 描述：通过Redis存储和验证token的实现类
  */
 @Component
 public class RedisTokenManager implements TokenManager {

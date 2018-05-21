@@ -1,5 +1,10 @@
 package com.sundy.common.util;
 
+import com.github.stuxuhai.jpinyin.PinyinException;
+import com.github.stuxuhai.jpinyin.PinyinFormat;
+import com.github.stuxuhai.jpinyin.PinyinHelper;
+import com.sundy.controller.BaseController;
+import org.apache.log4j.Logger;
 import sun.misc.BASE64Decoder;
 
 import java.io.UnsupportedEncodingException;
@@ -9,11 +14,14 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * 字符串处理工具类
  * @author sundy
- * @date 2017年10月19日 11:53
+ * @since 1.8
+ * 日期: 2018年03月15日 11:26:45
+ * 描述：字符串处理工具类
  */
 public class StringUtils {
+
+    private static final Logger LOGGER = org.apache.log4j.Logger.getLogger(StringUtils.class);
     /**
      * 将String数组转换为String字符串
      * @param strArray 要处理的String数组
@@ -311,6 +319,24 @@ public class StringUtils {
         }else{
             return format.format(size*1.0/1024)+"K";
         }
+    }
+
+    /**
+     * 汉字转拼音
+     *
+     * @param content 中文字符串 例如：你好世界
+     * @param format  PinyinFormat.WITH_TONE_MARK(nǐ,hǎo,shì,jiè),
+     * PinyinFormat.WITH_TONE_NUMBER(ni3,hao3,shi4,jie4),
+     * PinyinFormat.WITHOUT_TONE(ni,hao,shi,jie)
+     * @return
+     */
+    public static String convertToPY(String content,PinyinFormat format){
+        try {//PinyinFormat.WITH_TONE_MARK
+            return PinyinHelper.convertToPinyinString(content, ",", format); // nǐ,hǎo,shì,jiè
+        } catch (PinyinException e) {
+            LOGGER.error(ExceptionUtils.getException(e));
+        }
+        return content;
     }
 
 }

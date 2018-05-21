@@ -11,9 +11,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * swagger2配置
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年02月21日 10:28:57
+ * 描述：swagger2配置
  */
 // @Configuration 这里需要注意，如果项目架构是SSM，那就不要加这个注解，如果是 spring boot 架构类型的项目，就必须加上这个注解，让 spring 加载该配置。
 // spring boot 项目不需要添加此注解，SSM 项目需要加上此注解，否则将会报错。

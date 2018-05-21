@@ -31,7 +31,10 @@
       <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
     </table>-->
 
-    <table tableName="tb_share_file" domainObjectName="ShareFile">
+   <!-- <table tableName="tb_share_file" domainObjectName="ShareFile">
+      <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+    </table>-->
+    <table tableName="tb_sender" domainObjectName="Sender">
       <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
     </table>
   </context>

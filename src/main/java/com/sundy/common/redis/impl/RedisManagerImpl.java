@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 通过Redis存储变化很小的数据表
  * @author sundy
- * @date 2018年04月10日 11:51
+ * @since 1.8
+ * 日期: 2018年04月02日 11:35:01
+ * 描述：通过Redis存储变化很小的数据表
  */
 @Component
 public class RedisManagerImpl implements RedisManager {

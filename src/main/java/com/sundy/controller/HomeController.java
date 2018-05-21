@@ -15,19 +15,20 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 平台登录、注销
  * @author sundy
- * @date 2018年03月30 15:37:25
+ * @since 1.8
+ * 日期: 2018年03月30 15:37:25
+ * 描述：平台登录、注销
  */
 @Api(description = "平台登录注册", tags = "HomeController" ,basePath = "/home")
 @RequestMapping("/home")
@@ -36,9 +37,10 @@ public class HomeController {
 
     private static final Logger LOGGER = Logger.getLogger(HomeController.class);
 
-    @Autowired
+    @Resource
     private TokenManager tokenManager;
-    @Autowired
+
+    @Resource
     private UserService userService;
 
     @ApiOperation(value = "用户登录" ,notes = "用户登录")

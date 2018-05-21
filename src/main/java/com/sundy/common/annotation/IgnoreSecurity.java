@@ -4,9 +4,10 @@ import java.lang.annotation.*;
 
 
 /**
- * 自定义注解，标识是否忽略REST安全性检查
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年02月21日 10:28:57
+ * 描述：自定义注解，标识是否忽略REST安全性检查
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -30,7 +31,7 @@ public @interface IgnoreSecurity {
 
     /**
      * 权限级别
-     * 
+     *
      * @return
      */
     int security () default VISITOR;

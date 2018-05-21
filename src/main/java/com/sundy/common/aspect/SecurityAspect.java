@@ -20,11 +20,11 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 
-
 /**
- * token有效性判断切面
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年03月21日 10:41:57
+ * 描述：token有效性判断切面
  */
 @Component
 @Aspect
@@ -62,8 +62,7 @@ public class SecurityAspect {
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
             IgnoreSecurity annotation = method.getAnnotation(IgnoreSecurity.class);
             if(annotation!=null){
-                int security = annotation.security();
-                if (security==0){
+                if (annotation.security()==IgnoreSecurity.VISITOR){
                     return pjp.proceed();
                 }
             }

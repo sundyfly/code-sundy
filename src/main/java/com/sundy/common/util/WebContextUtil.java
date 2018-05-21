@@ -5,11 +5,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
- * Web上下文工具类
  * @author sundy
- * @date 2017年10月19日 11:51
+ * @since 1.8
+ * 日期: 2018年03月16日 17:05:41
+ * 描述：Web上下文工具类
  */
 public class WebContextUtil {
 

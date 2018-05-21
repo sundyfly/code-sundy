@@ -3,9 +3,10 @@ package com.sundy.model;
 import com.sundy.common.constant.StatusCode;
 
 /**
- * restful API 接口统一响应值
- * @author leeyom
- * @date 2017年10月19日 10:57
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年04月18日 9:25:56
+ * 描述：restful API 接口统一响应值
  */
 public class AjaxResult {
 

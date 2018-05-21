@@ -4,7 +4,9 @@ import com.sundy.model.entity.User;
 
 /**
  * @author sundy
- * @date 2018年04月10日 15:11
+ * @since 1.8
+ * 日期: 2018年04月17日 17:58:29
+ * 描述：
  */
 public interface UserService extends BaseService<User>{
 

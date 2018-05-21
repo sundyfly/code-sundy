@@ -7,9 +7,10 @@ import org.slf4j.LoggerFactory;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 将String进行base64编码解码，使用utf-8
  * @author sundy
- * @date 2017年10月19日 11:52
+ * @since 1.8
+ * 日期: 2018年03月12日 11:33:21
+ * 描述：将String进行base64编码解码，使用utf-8
  */
 public class Base64Utils {
 

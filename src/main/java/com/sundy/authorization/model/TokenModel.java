@@ -1,9 +1,15 @@
 package com.sundy.authorization.model;
 
 /**
- * Token的Model类，可以增加字段提高安全性，例如时间戳、url签名
+ *
  * @author sundy
  * @date 2017年10月19日 10:41
+ */
+/**
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年03月15日 10:23:08
+ * 描述：Token的Model类，可以增加字段提高安全性，例如时间戳、url签名
  */
 public class TokenModel {
 

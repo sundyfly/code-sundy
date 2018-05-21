@@ -4,9 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 验证工具类
  * @author sundy
- * @date 2017年10月19日 11:53
+ * @since 1.8
+ * 日期: 2018年03月16日 15:45:45
+ * 描述：验证工具类
  */
 public class VerificationUtil {
     /**
@@ -42,6 +43,11 @@ public class VerificationUtil {
         return m.matches();
     }
 
+    /**
+     * 判断在image/是否为图片
+     * @param ContentType
+     * @return
+     */
     public static boolean isImage(String ContentType) {
         String str = "^(image/gif|image/jpg|image/png|image/jpeg)$";
         Pattern p = Pattern.compile(str);
@@ -63,4 +69,48 @@ public class VerificationUtil {
         return true;
     }
 
+    /**
+     * 校验是否为电话号码
+     *
+     * @param phone
+     * @return
+     */
+    public static boolean isPhone(String phone){
+        Pattern pattern = Pattern.compile("^1[3|4|5|7|8][0-9]{9}$");
+        return pattern.matcher(phone).matches();
+    }
+
+    /**
+     * 校验身份证是否正确
+     *
+     * @param idCard
+     * @return
+     */
+    public static boolean isIDCard(String idCard){
+        if(idCard.length()!=15 && idCard.length()!=18){
+            return false;
+        }
+        if(idCard.length()==15){
+            String regex = "\\d{14}[[0-9],0-9xX]";
+            return Pattern.compile(regex).matcher(idCard).matches();
+        }else if(idCard.length()==18){
+            String regex = "\\d{17}[[0-9],0-9xX]";
+            return Pattern.compile(regex).matcher(idCard).matches();
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * 校验输入的是否都是汉字
+     * @param str
+     * @return
+     */
+    public static boolean isHanzi(String str){
+        return Pattern.compile("^[\\u4e00-\\u9fa5]{0,}$").matcher(str).matches();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isHanzi(""));
+    }
 }

@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * @author sundy
- * @date 2018年03月19日 10:41
+ * @since 1.8
+ * 日期: 2018年03月19日 10:41:58
+ * 描述：
  */
 @Service
 @Transactional

@@ -1,9 +1,10 @@
 package com.sundy.common.exception;
 
 /**
- * Token过期时抛出异常
  * @author sundy
- * @date 2017年10月19日 10:41
+ * @since 1.8
+ * 日期: 2018年03月01日 10:32:24
+ * 描述：Token过期时抛出异常
  */
 public class TokenException extends RuntimeException {
 

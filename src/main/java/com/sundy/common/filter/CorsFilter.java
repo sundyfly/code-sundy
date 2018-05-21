@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 处理跨域的过滤器
  * @author sundy
- * @date 2017年10月19日 14:47
+ * @since 1.8
+ * 日期: 2018年03月02日 10:32:24
+ * 描述：处理跨域的过滤器
  */
 @Component
 public class CorsFilter implements Filter {

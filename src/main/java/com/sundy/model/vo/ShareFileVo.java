@@ -3,7 +3,10 @@ package com.sundy.model.vo;
 import com.sundy.model.entity.ShareFile;
 
 /**
- * Created by tiptop on 2018/4/9.
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年04月14日 15:36:54
+ * 描述：
  */
 public class ShareFileVo extends ShareFile{
     private String fileSizeStr;

@@ -1,5 +1,6 @@
 package com.sundy.controller;
 
+import com.sundy.common.annotation.IgnoreSecurity;
 import com.sundy.model.AjaxResult;
 import com.sundy.model.entity.User;
 import com.sundy.service.UserService;
@@ -10,11 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
- * Created by sundy on 2018/3/30.
- *
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年03月30 15:13:25
+ * 描述：平台用户信息管理
  */
 @Api(description = "平台用户信息管理",tags = "UserController" ,basePath ="/users")
 @RequestMapping(value = "/users")
@@ -22,7 +26,7 @@ import javax.validation.Valid;
 public class UserController extends BaseController<User>{
     private static final Logger LOGGER = org.apache.log4j.Logger.getLogger(UserController.class);
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     /* 如果在使用接口返回信息的时候，可以直接拿到BindingResult中的错误信息
@@ -71,6 +75,7 @@ public class UserController extends BaseController<User>{
             @ApiImplicitParam(paramType = "path",value = "用户ID",name = "uid",dataType = "int",required = true,defaultValue = "")
     })
     @RequestMapping(value = "/{uid}",method = RequestMethod.GET)
+    @IgnoreSecurity
     @ResponseBody
     public AjaxResult getEntity(@PathVariable("uid")Integer uid){
         return super.getEntity(userService,uid);

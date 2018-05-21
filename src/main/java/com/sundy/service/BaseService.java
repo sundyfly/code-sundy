@@ -1,13 +1,14 @@
 package com.sundy.service;
 
-import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
 /**
- * Service基础接口
  * @author sundy
- * @date 2018年03月10 11:15:25
+ * @since 1.8
+ * 日期: 2018年03月21日 11:21:25
+ * 描述：
  */
 public interface BaseService<T> {
 
@@ -16,7 +17,7 @@ public interface BaseService<T> {
      *
      * @return
      */
-    Page<T> findEntityAll();
+    PageInfo<T> findEntityAll();
 
     /**
      *根据主键删除
@@ -35,7 +36,7 @@ public interface BaseService<T> {
     int insert(T record);
 
     /**
-     * 根据转入的实体类选择性的插入数据库
+     * 根据转入的实体类选择性的插入数据库,如果实体的成员变量为null，<br>则插入数据库的默认值，若无默认值则为null
      *
      * @param record
      * @return

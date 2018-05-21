@@ -1,7 +1,10 @@
 package com.sundy.model;
 
 /**
- * Created by tiptop on 2018/4/9.
+ * @author sundy
+ * @since 1.8
+ * 日期: 2018年04月18日 9:25:56
+ * 描述：分页返回的接口
  */
 public class PageAjaxResult {
 
